@@ -17,6 +17,7 @@ jmEzMySQL.public.init = function (options) {
     var _self = jmEzMySQL;
     options.connectionLimit = options.connectionLimit ? options.connectionLimit : 5;
     _self.pool = Mysql.createPool(options);
+    jmEzMySQL.public.pool = _self.pool;
 }
 
 jmEzMySQL.setLastQuery = function (q) {
@@ -34,6 +35,9 @@ jmEzMySQL.connection = function () {
     });
 }
 
+jmEzMySQL.public.getPool = function () {
+  return jmEzMySQL.pool;
+};
 
 /**
  * Format Query
